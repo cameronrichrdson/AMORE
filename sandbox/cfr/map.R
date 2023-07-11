@@ -8,7 +8,7 @@ nc <- nc_open(f[1])
 
 #Find variables
 ncNames <- names(nc$var)
-ncNames[grep(" ", ncNames)]
+ncNames[grep("lon", ncNames)]
 
 lat <- ncvar_get(nc, "lat")
 lon <- ncvar_get(nc, "lon")
@@ -19,6 +19,7 @@ topo <- read.topo(topofile)
 imagep(topo, xlim=c(-67,-58),ylim=c(41,50), drawContours = TRUE,
        breaks=c(-1000,-750,-500, -400,-300,-200, -100, -75,-50,-25))
 points(lon, lat, col="red",cex=0.7, pch=16)
+
 
 #Zoomed in topography
 ztopofile <- download.topo(-66,-58, 42, 46.5, resolution = 1) #Load topography
